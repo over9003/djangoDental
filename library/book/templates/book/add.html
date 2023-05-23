@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='container'>
+    <h1>Add.html</h1>
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class='form-group'>
+            <label for="title">Title:</label>
+            <input class='form-control' type="text" name="title" id="title">
+        </div>
+        <div class='form-group'>
+            <label for="author">Author:</label>
+            <input class='form-control' type="text" name="author" id="author">
+        </div>
+        <div class='form-group'>
+            <label for="pages">Pages:</label>
+            <input class='form-control' type="text" name="pages" id="pages">
+        </div>
+        <input class="btn-primary" type="submit" value="Salveaza">
+    </form>
+</div>
+{% endblock content %}
