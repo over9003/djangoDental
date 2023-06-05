@@ -5,6 +5,8 @@ from django.views.generic import FormView
 from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
 
 from classroom.models import Teacher
 from classroom.forms import ContactForm
@@ -27,6 +29,9 @@ class TeacherCreateView(CreateView):
 class TeacherListView(ListView):
     # model_list.html
     model = Teacher
+    queryset = Teacher.objects.order_by("first_name")
+    
+    context_object_name = "teacher_list"
 
 class ContactFormView(FormView):
     form_class = ContactForm
@@ -45,3 +50,12 @@ class TeacherDetailView(DetailView):
     # model_detail.html
     model = Teacher
     # PK -> {{teacher}}
+
+class TeacherUpdateView(UpdateView):
+    model = Teacher
+    fields = "__all__"
+    success_url = reverse_lazy("classroom:list_teachers")
+
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    success_url = reverse_lazy("classroom:list_teachers")

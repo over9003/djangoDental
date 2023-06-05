@@ -1,8 +1,18 @@
 <h1>list of teachers</h1>
 <ul>
     
-    {% for teacher in object_list %}
-        <li><a href="/classroom/teacher_detail/{{teacher.id}}">{{teacher.first_name}} {{teacher.last_name}}</a></li>
+    {% for teacher in teacher_list %}
+        <li>
+            <a href="/classroom/teacher_detail/{{teacher.id}}">{{teacher.first_name}} {{teacher.last_name}}</a>
+            <ul>
+                <li>
+                    <a href="/classroom/teacher_update/{{teacher.id}}">Update Information for {{teacher.first_name}}</a>
+                </li>
+                <li>
+                    <a href="/classroom/teacher_delete/{{teacher.id}}">Delete teacher {{teacher.first_name}}</a>
+                </li>
+            </ul>
+        </li>
         <!-- <li>{{teacher.first_name}} {{teacher.last_name}}</li> -->
     {% endfor %}
         
